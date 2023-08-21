@@ -1,4 +1,4 @@
-using Mvc.Data;
+using MvcWeb.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

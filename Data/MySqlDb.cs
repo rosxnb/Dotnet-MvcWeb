@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using MvcWeb.Category;
+using MvcWeb.Models;
 
-namespace Mvc.Data
+namespace MvcWeb.Data
 {
     public class MySqlDb : DbContext
     {
@@ -10,5 +10,14 @@ namespace Mvc.Data
         public MySqlDb(DbContextOptions<MySqlDb> options)
             : base(options)
         { }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            _ = modelBuilder.Entity<Category>().HasData(
+                new Category { Id = 1, Name = "Action", DisplayOrder = 1 },
+                new Category { Id = 2, Name = "SciFi", DisplayOrder = 2 },
+                new Category { Id = 3, Name = "History", DisplayOrder = 3 }
+            );
+        }
     }
 }
